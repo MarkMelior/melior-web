@@ -1,0 +1,18 @@
+.icon {
+  min-width: 64px;
+  max-width: 64px;
+
+  min-height: 64px;
+  max-height: 64px;
+  margin-right: theme('spacing.8');
+
+  color: theme('colors.primary-600');
+
+  @media (max-width: theme('screens.sm')) {
+    min-width: 48px;
+    max-width: 48px;
+    
+    min-height: 48px;
+    max-height: 48px;
+  }
+}

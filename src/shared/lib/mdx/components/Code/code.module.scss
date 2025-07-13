@@ -1,3 +1,7 @@
+.default {
+  color: theme('colors.default-700');
+}
+
 .secondary {
   color: theme('colors.secondary') !important;
 }
@@ -16,10 +20,6 @@
 
 .danger {
   color: theme('colors.danger') !important;
-}
-
-.default {
-  color: theme('colors.default-700') !important;
 }
 
 .gray {

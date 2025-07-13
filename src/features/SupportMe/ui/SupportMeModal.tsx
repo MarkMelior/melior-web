@@ -45,7 +45,8 @@ export const SupportMeModal: FC<SupportMeProps> = ({ children }) => {
             </ModalBody>
             <ModalFooter>
               <Text color="text-default-500" size="text-sm">
-                Буду благодарен любой поддержке! :D
+                На развитие творчества :)&nbsp;
+                <Emoji emoji="✨" />
               </Text>
             </ModalFooter>
           </>

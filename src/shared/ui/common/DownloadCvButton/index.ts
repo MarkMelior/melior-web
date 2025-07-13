@@ -1,1 +1,0 @@
-export { DownloadCvButton } from './DownloadCvButton';

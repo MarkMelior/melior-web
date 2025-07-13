@@ -25,7 +25,7 @@ export const SupportMeContent = () => (
       />
       <Button
         as={Link}
-        href={LinksMediaEnum.YouTubeSub}
+        href={LinksMediaEnum.Instagram}
         isIconOnly={true}
         startContent={<FaInstagram size={18} />}
         target="_blank"

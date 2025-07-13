@@ -13,12 +13,14 @@ import rocket from './rocket.json';
 import sber from './sber.json';
 import smile from './smile.webp';
 import star from './star.json';
+import stars from './stars.webp';
 import stop from './stop.webp';
 
 export const emojiData = {
   '⌨️': coding,
   '☕️': coffee,
   '✅': check,
+  '✨': stars,
   '❇️': sber,
   '❤️': heart,
   '❤️‍🔥': heartFire,

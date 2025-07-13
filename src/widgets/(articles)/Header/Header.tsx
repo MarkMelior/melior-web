@@ -7,6 +7,8 @@ import { formatDate } from '@/shared/lib/text';
 import { Blockquote, Flex, IconComponent, StackButtons } from '@/shared/ui';
 import { Skeleton } from '@/shared/ui/client';
 
+import styles from './header.module.scss';
+
 import type { FC, ReactNode } from 'react';
 
 interface HeaderProps {
@@ -79,7 +81,7 @@ export const Header: FC<HeaderProps> = ({
         className,
       )}
     >
-      <Flex align="items-center" justify="justify-between">
+      <Flex align="items-center" gap="gap-4" justify="justify-between">
         <div>
           <div
             className={cn(
@@ -120,12 +122,7 @@ export const Header: FC<HeaderProps> = ({
             </p>
           )}
         </div>
-        <IconComponent
-          className="mr-8 text-primary-600"
-          height={64}
-          icon={icon}
-          width={64}
-        />
+        <IconComponent className={styles.icon} icon={icon} />
       </Flex>
       <StackButtons className={cn('mt-6', classNames?.tags)} tags={tags} />
       {showWarning ? (

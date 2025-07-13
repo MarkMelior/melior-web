@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { type FC, memo, useMemo } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 import { cn } from '@/shared/lib/common';
 
@@ -19,6 +20,7 @@ interface EmojiProps {
 }
 
 const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) => {
+  const { inView, ref } = useInView({ rootMargin: '100px', triggerOnce: true });
   const { src, type } = useMemo(() => getEmojiData(emoji), [emoji]);
 
   if (!src) return emoji;
@@ -27,6 +29,7 @@ const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) =>
     <span
       aria-label={emoji}
       className={cn('inline-flex align-text-bottom relative', className)}
+      ref={ref}
       style={{
         fontSize: size,
         height: size,
@@ -35,7 +38,7 @@ const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) =>
         width: size,
       }}
     >
-      {type === 'animation' ? (
+      {inView ? type === 'animation' ? (
         <>
           <Lottie
             animationData={src}
@@ -62,7 +65,7 @@ const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) =>
           style={{ height: '100%', width: '100%' }}
           width={100}
         />
-      )}
+      ) : null}
     </span>
   );
 };
