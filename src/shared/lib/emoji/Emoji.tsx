@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { type FC, memo, useMemo, useState } from 'react';
+import { type FC, memo, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { cn } from '@/shared/lib/common';
@@ -21,7 +21,6 @@ interface EmojiProps {
 
 const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) => {
   const { inView, ref } = useInView({ rootMargin: '100px', triggerOnce: true });
-  const [isLoaded, setIsLoaded] = useState(false);
 
   const { src, type } = useMemo(() => getEmojiData(emoji), [emoji]);
 
@@ -40,22 +39,13 @@ const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) =>
         width: size,
       }}
     >
-      <span
-        aria-hidden={true}
-        className={cn(
-          'absolute inset-0 flex items-center justify-center transition-opacity',
-          isLoaded ? 'opacity-0' : 'opacity-100',
-        )}
-      >
-        {emoji}
-      </span>
       {inView ? type === 'animation' ? (
         <>
           <Lottie
             animationData={src}
+            async={false}
             autoplay={true}
             loop={true}
-            onDOMLoaded={() => setIsLoaded(true)}
             style={{ height: '100%', width: '100%' }}
           />
           <span
@@ -69,7 +59,6 @@ const EmojiComponent: FC<EmojiProps> = ({ className, emoji, size = '1.1em' }) =>
         <Image
           alt={emoji}
           height={100}
-          onLoad={() => setIsLoaded(true)}
           src={src}
           style={{ height: '100%', width: '100%' }}
           width={100}

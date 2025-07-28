@@ -95,4 +95,4 @@ export type TwWeight =
   | 'font-semibold'
   | 'font-bold';
 
-export type TwTextSize = `text-${Exclude<Size9Xl, 'md'> | 'sm-md'}` | 'text-base';
+export type TwTextSize = `text-${Exclude<Size9Xl, 'md'> | 'sm-md' | '2.5xl'}` | 'text-base';

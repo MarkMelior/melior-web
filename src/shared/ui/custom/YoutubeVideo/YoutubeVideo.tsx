@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
+import { PublicImages } from '@/shared/constants';
 import { YoutubeIcon } from '@/shared/icons';
 import { cn } from '@/shared/lib/common';
 import { formatDate } from '@/shared/lib/text';
@@ -32,11 +34,19 @@ export const YoutubeVideo: FC<YoutubeVideoProps> = async ({
       rel="noopener noreferrer"
       target="_blank"
     >
-      <img
+      <Image
+        alt="YouTube video preview"
+        className={styles.thumbnail}
+        height={720}
+        src={`/images/youtube/${videoId}.webp`}
+        width={1280}
+      />
+      {/* FIXED: Сейчас ютуб не работает в России, поэтому превью не будет отображаться */}
+      {/* <img
         alt="YouTube video preview"
         className={styles.thumbnail}
         src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-      />
+      /> */}
       <ArrowOutward />
       <YoutubeIcon className={styles.icon} />
     </Link>

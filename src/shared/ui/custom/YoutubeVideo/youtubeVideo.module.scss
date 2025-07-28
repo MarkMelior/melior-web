@@ -54,6 +54,7 @@
   transition: all 0.3s ease;
   pointer-events: none;
   user-select: none;
+  will-change: transform, filter;
 }
 
 .title {

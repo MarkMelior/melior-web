@@ -83,7 +83,7 @@ export const StackButtons = ({
                   >
                     {selectedData?.icon}
                   </span>
-                  <Text font="tiny5" size="text-2xl">
+                  <Text font="tiny5" size="text-2.5xl">
                     Опыт работы с
                     {' '}
                     {selectedData?.name}
