@@ -1,0 +1,1 @@
+export { ArrowOutward } from './ArrowOutward';

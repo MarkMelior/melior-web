@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import { StackData } from '@/shared/constants';
 import type { StackProps, StackVariants } from '@/shared/constants';
@@ -76,20 +76,29 @@ export const StackButtons = ({
           <ModalContent>
             {(onClose) => (
               <>
-                <ModalHeader className="flex items-center gap-4">
+                <ModalHeader className="flex items-center gap-5">
                   <span
                     className={cn('scale-150', { 'text-default-950': selectedData?.color === 'black' })}
                     style={{ color: selectedData?.color === 'black' ? undefined : selectedData?.color }}
                   >
                     {selectedData?.icon}
                   </span>
-                  Опыт работы с
-                  {' '}
-                  {selectedData?.name}
+                  <Text font="tiny5" size="text-2xl">
+                    Опыт работы с
+                    {' '}
+                    {selectedData?.name}
+                  </Text>
                 </ModalHeader>
                 <ModalBody>
-                  <Text color="text-default-600" weight="font-light">
-                    {selectedData?.description ?? 'Описание отсутствует'}
+                  <Text color="text-default-700">
+                    {(selectedData?.description ?? 'Описание отсутствует')
+                      .split('\n')
+                      .map((line, index) => (
+                        <Fragment key={index}>
+                          {line}
+                          <br />
+                        </Fragment>
+                      ))}
                   </Text>
                 </ModalBody>
                 <ModalFooter className="justify-end">

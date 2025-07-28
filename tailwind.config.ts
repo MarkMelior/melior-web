@@ -26,8 +26,14 @@ const config: Config = {
       backgroundImage: {
         noise: 'url(\'/images/interface/noise.png\')',
       },
+      fontSize: {
+        'sm-md': ['0.9375rem', { lineHeight: '1.25rem' }],
+      },
       maxWidth: {
         '8xl': '90rem',
+      },
+      screens: {
+        'md-lg': '56rem',
       },
       spacing: {
         heightArticlesNavbar: '64px',

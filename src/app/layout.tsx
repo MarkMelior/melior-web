@@ -7,8 +7,9 @@ import { ScrollShadow } from '@/shared/ui/client';
 import { ClientLoader } from '@/features/ClientLoader';
 import { ScrollUp } from '@/features/ScrollUp';
 
-import { ModalRoot } from '@/core/modal-root';
-import { AppInitProvider, HeroUIProvider, NextThemesProvider } from '@/core/providers';
+import { ModalRoot } from '@core/modal-root';
+import { AppInitProvider, HeroUIProvider, NextThemesProvider } from '@core/providers';
+import { YarndexMetrika } from '@core/scripts/yarndex-metrika';
 
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
@@ -28,6 +29,9 @@ type Props = {
 
 const RootLayout = async ({ children }: Readonly<Props>) => (
   <html lang="ru" suppressHydrationWarning={true}>
+    <head>
+      <YarndexMetrika.Script />
+    </head>
     <body className={Fonts.default}>
       <NextThemesProvider>
         <HeroUIProvider>
@@ -53,6 +57,7 @@ const RootLayout = async ({ children }: Readonly<Props>) => (
           </AppInitProvider>
         </HeroUIProvider>
       </NextThemesProvider>
+      <YarndexMetrika.NoScript />
     </body>
   </html>
 );

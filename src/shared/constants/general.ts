@@ -13,3 +13,4 @@ export enum LocalStorageKeys {
 
 export const APP_NAME = 'Melior Web';
 export const APP_SHORT_NAME = 'Melior';
+export const BASE_URL = 'https://melior.vercel.app';

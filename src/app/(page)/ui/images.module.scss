@@ -21,17 +21,3 @@
     transform: scale(1.02);
   }
 }
-
-.arrow {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 20;
-  min-width: 20px;
-  min-height: 20px;
-  padding: 4px;
-
-  border-radius: 6px;
-  border: 1px solid theme('colors.default-300');
-  background-color: theme('colors.default-100');
-}

@@ -10,7 +10,8 @@ const config: StorybookConfig = {
     config.resolve!.alias = {
       ...config.resolve!.alias,
       '@': path.resolve(__dirname, '../../src'),
-      '@/core': path.resolve(__dirname, '../../src/app/core'),
+      '@core': path.resolve(__dirname, '../../src/app/core'),
+      '@public': path.resolve(__dirname, '../../public'),
     };
 
     return config;

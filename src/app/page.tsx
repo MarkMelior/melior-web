@@ -4,27 +4,45 @@ import path from 'path';
 
 import { CategoryCard } from '@/widgets/(articles)/CategoryCard';
 
-import { PublicImages } from '@/shared/constants';
+import { StarsIcon } from '@/shared/icons';
 import { Emoji } from '@/shared/lib/emoji';
 import { MDXRemote, getMdx } from '@/shared/lib/mdx';
-import { Flex, Text, Underline } from '@/shared/ui';
-import { RandomSticker } from '@/shared/ui/client';
+import {
+  Flex,
+  RandomSticker,
+  Steps,
+  Text,
+  Underline,
+  YoutubeVideo,
+  getYoutubeInfo,
+  parseYoutubeDescriptionKeyPoints,
+} from '@/shared/ui';
 
 import { ArticlesCategoryEnum, getArticleListByCategory } from '@/entities/articles';
 
-import { MainLayout } from '@/core/layouts/main';
+import { MainLayout } from '@core/layouts/main';
+import BannerImage from '@public/images/misc/banner.webp';
 
-import { MyArticlesButton } from './(page)/MyArticlesButton';
+import { ArrowOneIcon } from './(page)/icon/arrow-one';
+import { ArrowTwoIcon } from './(page)/icon/arrow-two';
+import { LinesIcon } from './(page)/icon/lines';
+import { UnderlineIcon } from './(page)/icon/underline';
+import { MyArticlesButton } from './(page)/ui/MyArticlesButton';
 
 import type { MDXComponents } from 'mdx/types';
+
+const YOUTUBE_ID = process.env.NEXT_PUBLIC_YOUTUBE_ID;
 
 export default async function Home() {
   const dir = path.join(process.cwd(), 'src', 'app', 'index.mdx');
   const { content } = await getMdx(dir);
   const { articles } = await getArticleListByCategory(ArticlesCategoryEnum.FRONTEND);
 
+  const { description, publishedAt, title } = await getYoutubeInfo(YOUTUBE_ID);
+  const keyPoints = parseYoutubeDescriptionKeyPoints(description);
+
   const components: MDXComponents = {
-    Images: dynamic(() => import('./(page)/Images').then((mod) => mod.Images)),
+    Images: dynamic(() => import('./(page)/ui/Images').then((mod) => mod.Images)),
     StackButtons: dynamic(() => import('@/shared/ui').then((mod) => mod.StackButtons)),
   };
 
@@ -34,8 +52,10 @@ export default async function Home() {
         <Image
           alt="Banner"
           className="min-h-40 min-w-full object-cover lg:min-h-0"
+          fetchPriority="high"
           height={636}
-          src={PublicImages.misc.Banner}
+          priority={true}
+          src={BannerImage}
           width={3840}
         />
       </div>
@@ -65,6 +85,48 @@ export default async function Home() {
           </Flex>
           <RandomSticker className="mr-6" rounded="rounded-lg" size={200} />
         </Flex>
+        {YOUTUBE_ID ? (
+          <Flex
+            align="items-center"
+            className="mt-16 flex-col-reverse sm:flex-row sm:gap-8"
+          >
+            <YoutubeVideo
+              className="max-w-sm"
+              publishedAt={publishedAt}
+              title={title}
+              videoId={YOUTUBE_ID}
+            />
+            <ArrowOneIcon className="mb-12 hidden text-primary-400 dark:text-primary-600 md-lg:block" />
+
+            <Flex>
+              <Flex gap="gap-2" vertical={true}>
+                {/* TITLE */}
+                <Flex align="items-center" gap="gap-2">
+                  <StarsIcon className="text-primary-400 dark:text-primary-600" />
+                  <Flex className="relative pr-[22px]" gap="gap-2">
+                    <Text size="text-2xl" weight="font-medium">
+                      Посмотри
+                    </Text>
+                    <Text
+                      className="dark:text-primary-600"
+                      color="text-primary-400"
+                      size="text-2xl"
+                      weight="font-bold"
+                    >
+                      видео
+                    </Text>
+                    <UnderlineIcon className="absolute -bottom-2 right-3 text-primary-400 dark:text-primary-600" />
+                    <LinesIcon className="absolute -top-1.5 right-0 text-primary-400 dark:text-primary-600" />
+                  </Flex>
+                </Flex>
+                {/* STEPS */}
+                <Steps className="ml-1" steps={keyPoints} />
+              </Flex>
+              <ArrowTwoIcon className="-ml-6 mt-4 block text-primary-400 dark:text-primary-600 sm:hidden" />
+            </Flex>
+
+          </Flex>
+        ) : null}
         <Flex className="mt-16" gap="gap-8" vertical={true}>
           <MyArticlesButton />
           <CategoryCard articles={articles.slice(0, 4)} openInsideModal={true} />

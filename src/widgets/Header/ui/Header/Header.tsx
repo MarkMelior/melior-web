@@ -31,19 +31,28 @@ import styles from './header.module.scss';
  * 6) Все ссылки
  */
 
+const getAlertMessage = () => {
+  const alertMessage = process.env.NEXT_PUBLIC_ALERT_MESSAGE ?? '';
+  const parts = alertMessage.split('$version');
+
+  return parts.flatMap((part, idx) =>
+    idx === 0
+      ? [part]
+      : [
+        <Text className="mr-1 decoration-transparent" color="text-secondary" key={idx}>
+          {`[v${process.env.NEXT_PUBLIC_APP_VERSION}]`}
+        </Text>,
+        part,
+      ],
+  );
+};
+
 export const Header = () => (
   <header className={styles.header}>
     <HeaderLogo />
     <HeaderAlert
       color="secondary"
-      title={(
-        <>
-          <Text className="mr-1 decoration-transparent" color="text-secondary">
-            {`[v${process.env.NEXT_PUBLIC_APP_VERSION}]`}
-          </Text>
-          Сайт в разработке - уже почти готово 👀
-        </>
-      )}
+      title={getAlertMessage()}
     >
       <HeaderLinks color="secondary" />
     </HeaderAlert>

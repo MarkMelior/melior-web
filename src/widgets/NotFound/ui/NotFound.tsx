@@ -4,8 +4,8 @@ import { BiSolidDoorOpen } from 'react-icons/bi';
 import { AppRouteEnum } from '@/shared/constants';
 import type { EmojiType } from '@/shared/lib/emoji';
 import { Emoji } from '@/shared/lib/emoji';
-import { Flex, Text } from '@/shared/ui';
-import { Button, RandomSticker } from '@/shared/ui/client';
+import { Flex, RandomSticker, Text } from '@/shared/ui';
+import { Button } from '@/shared/ui/client';
 
 import styles from './notFound.module.scss';
 

@@ -3,3 +3,5 @@ export * from './flask';
 export * from './flask2';
 export * from './Logo';
 export * from './long-arrow-right';
+export * from './stars';
+export * from './youtube';

@@ -29,6 +29,7 @@ import {
   SiMongodb,
   SiNestjs,
   SiNextui,
+  SiOpenai,
   SiPostgresql,
   SiPrisma,
   SiReactquery,
@@ -92,6 +93,7 @@ export type StackVariants =
   | 'json'
   | 'seo'
   | 'bash'
+  | 'chat-gpt'
   | 'figma';
 
 export interface StackProps {
@@ -131,6 +133,11 @@ export const StackData: Record<StackVariants, StackProps> = {
     color: '#E87D0D',
     icon: <SiBlender size={18} />,
     name: 'Blender',
+  },
+  'chat-gpt': {
+    color: '#2EA986',
+    icon: <SiOpenai size={18} />,
+    name: 'Chat GPT',
   },
   'ci-cd': {
     color: 'black',
@@ -207,7 +214,7 @@ export const StackData: Record<StackVariants, StackProps> = {
   },
   'mobx': {
     color: '#FF9955',
-    description: 'Основной инструмент для управления состоянием в проектах Сбера. Уверенно работаю с observable, computed, action и makeAutoObservable. Но слишком большая свобода требует строгой архитектуры.',
+    description: 'Основной инструмент для управления состоянием в проектах СберСервис. Уверенно работаю с observable, computed, action и makeAutoObservable.\n\nЕсть опыт миграции больших проектов с Redux на MobX',
     icon: <SiMobx size={18} />,
     name: 'MobX',
   },
@@ -280,7 +287,7 @@ export const StackData: Record<StackVariants, StackProps> = {
   },
   'redux': {
     color: '#593D88',
-    description: 'Используем в Сбер, но как легаси (перешли на MobX). Хорошо знаю createSlice, configureStore, createAsyncThunk. Умею строить масштабируемую структуру хранилища, разбивать логику по фичам (особенно в связке с FSD).',
+    description: 'Используем в СберСервис, но в основном это легаси (перешли на MobX)\n\nХорошо знаю createSlice, configureStore, createAsyncThunk. Умею строить масштабируемую структуру хранилища, разбивать логику по фичам (особенно в связке с FSD).',
     icon: <SiRedux size={18} />,
     name: 'Redux',
   },
@@ -328,13 +335,13 @@ export const StackData: Record<StackVariants, StackProps> = {
   },
   'typescript': {
     color: '#007ACC',
-    description: 'С самого начала обучения фронту - я пишу на TypeScript. Сначала не понимал зачем он нужен, а сейчас не могу без него жить. Имею большой опыт миграции проектов с JavaScript на TypeScript.',
+    description: 'С самого начала обучения фронту - я пишу на TypeScript. Сначала не понимал зачем он нужен, а сейчас не могу без него жить.\n\nИмею большой опыт миграции проектов с JavaScript на TypeScript.',
     icon: <BiLogoTypescript size={20} />,
     name: 'TypeScript',
   },
   'webpack': {
     color: '#8DD6F9',
-    description: 'Имею опыт глубокой настройки и оптимизации сборки. В рамках задач в Сбере - оптимизировал конфигурацию так, что удалось: Уменьшить вес фронтенд-бандлов на ~32% и ускорить загрузку страниц за счёт разбивки на чанки.',
+    description: 'Имею опыт глубокой настройки и оптимизации сборки.\n\nВ рамках задач в Сбере - оптимизировал конфигурацию так, что удалось: Уменьшить вес фронтенд-бандлов на ~32% и ускорить загрузку страниц за счёт разбивки на чанки.',
     icon: <SiWebpack size={18} />,
     isDarkText: true,
     name: 'Webpack',

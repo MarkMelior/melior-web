@@ -1,6 +1,6 @@
 import { ArticlesListContent } from '@/entities/articles';
 
-import { ArticlesBaseLayout } from '@/core/layouts/articles-base';
+import { ArticlesBaseLayout } from '@core/layouts/articles-base';
 
 import type { Metadata } from 'next';
 

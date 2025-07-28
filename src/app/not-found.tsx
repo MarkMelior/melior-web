@@ -2,7 +2,7 @@ import { NotFound as NotFoundContent } from '@/widgets/NotFound';
 
 import { APP_NAME } from '@/shared/constants';
 
-import { MinimalLayout } from '@/core/layouts/minimal';
+import { MinimalLayout } from '@core/layouts/minimal';
 
 import type { Metadata } from 'next';
 

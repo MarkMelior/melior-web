@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { MdArrowOutward } from 'react-icons/md';
 
 import { PublicImages } from '@/shared/constants';
 import { cn } from '@/shared/lib/common';
+import { ArrowOutward } from '@/shared/ui';
 import { Image } from '@/shared/ui/client';
 
 import styles from './images.module.scss';
@@ -49,7 +49,7 @@ export const Images = () => (
           key={src}
           target="_blank"
         >
-          <MdArrowOutward className={styles.arrow} />
+          <ArrowOutward />
           <Image alt={alt} src={src} />
         </Link>
       ) : (

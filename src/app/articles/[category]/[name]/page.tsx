@@ -22,7 +22,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const { content, headlines, metadata, metadataCategory } = await getArticle(category, name);
 
   const components: MDXComponents = {
-    // ! ОШИБКА ТУТ
     AuthExample: dynamic(() => import('@/entities/articles/articles/frontend/app-router-auth/examples').then((mod) => mod.AuthExample)),
     Blockquote: dynamic(() => import('@/shared/ui/typography/Blockquote').then((mod) => mod.Blockquote)),
     CodeSteps: dynamic(() => import('@/shared/ui/typography/CodeSteps').then((mod) => mod.CodeSteps)),
