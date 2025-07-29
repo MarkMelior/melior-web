@@ -38,7 +38,7 @@ export default async function Home() {
   const { content } = await getMdx(dir);
   const { articles } = await getArticleListByCategory(ArticlesCategoryEnum.FRONTEND);
 
-  const { description, publishedAt, title } = await getYoutubeInfo(YOUTUBE_ID);
+  const { description, publishedAt, title, viewCount } = await getYoutubeInfo(YOUTUBE_ID);
   const keyPoints = parseYoutubeDescriptionKeyPoints(description);
 
   const components: MDXComponents = {
@@ -88,13 +88,14 @@ export default async function Home() {
         {YOUTUBE_ID ? (
           <Flex
             align="items-center"
-            className="mt-16 flex-col-reverse sm:flex-row sm:gap-8"
+            className="mt-16 flex-col-reverse sm:flex-row sm:gap-6"
           >
             <YoutubeVideo
               className="max-w-sm"
               publishedAt={publishedAt}
               title={title}
               videoId={YOUTUBE_ID}
+              viewCount={viewCount}
             />
             <ArrowOneIcon className="mb-12 hidden text-primary-400 dark:text-primary-600 md-lg:block" />
 

@@ -27,8 +27,9 @@ const config: Config = {
         noise: 'url(\'/images/interface/noise.png\')',
       },
       fontSize: {
-        '2.5xl': ['1.625rem', { lineHeight: '2.125rem' }],
+        '2.5xl': ['1.6rem', { lineHeight: '2.1rem' }],
         'sm-md': ['0.9375rem', { lineHeight: '1.25rem' }],
+        'xs-sm': ['0.8125rem', { lineHeight: '1.125rem' }],
       },
       maxWidth: {
         '8xl': '90rem',

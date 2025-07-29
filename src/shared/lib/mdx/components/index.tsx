@@ -43,7 +43,7 @@ export const MDXComponentsData: MDXComponents = {
       {children}
     </Heading>
   ),
-  hr: () => <hr className="mx-8 my-7 border-default-200/80" />,
+  hr: () => <hr className="m-8 border-default-200/80" />,
   img: ({ alt, className, src, ...props }: ComponentPropsWithoutRef<'img'>) => (
     <img
       alt={alt}

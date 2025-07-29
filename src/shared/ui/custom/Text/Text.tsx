@@ -33,6 +33,7 @@ interface TextProps {
    * @size 3xl - 30px
    */
   size?: TwTextSize | number
+  title?: string
   uppercase?: boolean
   weight?: TwWeight
 }
@@ -49,6 +50,7 @@ export const Text = ({
   href,
   onClick,
   size,
+  title,
   uppercase,
   weight,
 }: TextProps) => (
@@ -72,6 +74,7 @@ export const Text = ({
       fontSize: typeof size === 'number' ? `${size}px` : undefined,
       lineHeight: typeof size === 'number' ? `${size + 8}px` : undefined,
     }}
+    title={title}
   >
     {children}
   </Component>

@@ -38,7 +38,9 @@ type HeroColor =
   | 'divider'
   | 'focus';
 
-export type HeroTextColor = `text-${HeroColor}`;
+type Opacity = 25 | 50 | 75 | 100;
+
+export type HeroTextColor = `text-${HeroColor}` | `text-${HeroColor}/${Opacity}`;
 export type HeroBackgroundColor = `bg-${HeroColor}`;
 
 /**
@@ -95,4 +97,4 @@ export type TwWeight =
   | 'font-semibold'
   | 'font-bold';
 
-export type TwTextSize = `text-${Exclude<Size9Xl, 'md'> | 'sm-md' | '2.5xl'}` | 'text-base';
+export type TwTextSize = `text-${Exclude<Size9Xl, 'md'> | 'sm-md' | '2.5xl' | 'xs-sm'}` | 'text-base';
