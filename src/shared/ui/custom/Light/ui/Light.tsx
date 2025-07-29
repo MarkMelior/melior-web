@@ -23,7 +23,7 @@ export const Light: FC<LightProps> = () => (
           <img
             alt="light"
             className="w-[71.75rem] max-w-none flex-none dark:hidden"
-            loading="lazy"
+            fetchPriority="high"
             src={PublicImages.interface.Light}
           />
         </picture>
@@ -32,7 +32,7 @@ export const Light: FC<LightProps> = () => (
           <img
             alt="light"
             className="hidden w-[90rem] max-w-none flex-none dark:block"
-            loading="lazy"
+            fetchPriority="high"
             src={PublicImages.interface.LightDark}
           />
         </picture>

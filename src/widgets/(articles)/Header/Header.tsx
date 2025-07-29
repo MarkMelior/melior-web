@@ -4,7 +4,7 @@ import type { StackVariants } from '@/shared/constants';
 import type { IconNames } from '@/shared/icons/types';
 import { cn } from '@/shared/lib/common';
 import { formatDate } from '@/shared/lib/text';
-import { Blockquote, Flex, IconComponent, StackButtons } from '@/shared/ui';
+import { Blockquote, Flex, IconComponent, StackButtons, Text } from '@/shared/ui';
 import { Skeleton } from '@/shared/ui/client';
 
 import styles from './header.module.scss';
@@ -127,10 +127,15 @@ export const Header: FC<HeaderProps> = ({
       <StackButtons className={cn('mt-6', classNames?.tags)} tags={tags} />
       {showWarning ? (
         <Blockquote className="mt-6" variant="warning">
-          <strong>Осторожно:</strong>
-          Статья была обновлена более года назад -&nbsp;
-          {formattedCreatedAt || formattedUpdatedAt}
-          . Информация может быть не актуальной.
+          <span>
+            <strong>Внимание:</strong>
+            {' '}
+            <Text color="text-default-600">
+              Статья была обновлена более года назад -&nbsp;
+              {formattedCreatedAt || formattedUpdatedAt}
+              . Информация может быть не актуальной
+            </Text>
+          </span>
         </Blockquote>
       ) : null}
     </header>

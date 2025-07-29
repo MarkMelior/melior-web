@@ -7,7 +7,7 @@ export const Sidebar = async () => {
   const items = await getArticlesList();
 
   return (
-    <div className="sticky top-0 z-sidebar mt-[-theme('spacing.heightArticlesNavbar')] hidden h-screen max-h-screen grid-rows-2 gap-3 lg:grid">
+    <div className="sticky top-0 mt-[-theme('spacing.heightArticlesNavbar')] hidden h-screen max-h-screen grid-rows-2 gap-3 lg:grid">
       <nav className="h-full overflow-y-auto pr-6 lg:text-sm lg:leading-6">
         <div className="pointer-events-none sticky">
           <div className="h-10" />

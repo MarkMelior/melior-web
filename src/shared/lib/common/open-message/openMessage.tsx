@@ -2,8 +2,7 @@
 
 import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { FaCheckCircle } from 'react-icons/fa';
-import { FaCircleInfo } from 'react-icons/fa6';
+import { FaCheck, FaCircleInfo } from 'react-icons/fa6';
 import { IoWarning } from 'react-icons/io5';
 import { MdError } from 'react-icons/md';
 
@@ -27,7 +26,7 @@ const getIcon = (type: MessageType) => {
     case 'info':
       return <FaCircleInfo className="text-info" size={16} />;
     case 'success':
-      return <FaCheckCircle className="text-success" size={18} />;
+      return <FaCheck className="text-success" size={18} />;
     case 'error':
       return <MdError className="text-error" size={20} />;
     case 'warning':

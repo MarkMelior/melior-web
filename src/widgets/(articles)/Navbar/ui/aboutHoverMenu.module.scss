@@ -12,10 +12,17 @@
   padding-top: 10px;
 
   opacity: 0;
+
+  transform: scale(0.98);
+
+  transition: transform 250ms;
   pointer-events: none;
+  transform-origin: top right;
 
   &.opened {
     opacity: 1;
+
+  transform: scale(1);
     pointer-events: all;
   }
 

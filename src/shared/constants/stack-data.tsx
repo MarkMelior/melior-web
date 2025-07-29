@@ -22,9 +22,11 @@ import {
   SiAntdesign,
   SiBabel,
   SiBlender,
+  SiConfluence,
   SiEslint,
   SiExpress,
   SiJest,
+  SiJira,
   SiMobx,
   SiMongodb,
   SiNestjs,
@@ -90,6 +92,8 @@ export type StackVariants =
   | 'express'
   | 'react-native'
   | 'postgres'
+  | 'confluence'
+  | 'jira'
   | 'json'
   | 'seo'
   | 'bash'
@@ -143,6 +147,11 @@ export const StackData: Record<StackVariants, StackProps> = {
     color: 'black',
     icon: <RiGitMergeLine size={18} />,
     name: 'CI/CD',
+  },
+  'confluence': {
+    color: '#172B4D',
+    icon: <SiConfluence size={18} />,
+    name: 'Confluence',
   },
   'cookie': {
     color: 'bg-yellow-500',
@@ -203,6 +212,11 @@ export const StackData: Record<StackVariants, StackProps> = {
     color: '#C21325',
     icon: <SiJest size={18} />,
     name: 'Jest',
+  },
+  'jira': {
+    color: '#0052CC',
+    icon: <SiJira size={18} />,
+    name: 'Jira',
   },
   'json': {
     icon: <LuFileJson2 size={18} />,

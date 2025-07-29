@@ -9,6 +9,7 @@
   height: theme('spacing.heightArticlesNavbar');
 
   transform: translateX(50%);
+  pointer-events: none;
 
   @apply px-4 sm:px-6 md:px-8;
 }

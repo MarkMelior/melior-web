@@ -27,7 +27,7 @@ const config: Config = {
         noise: 'url(\'/images/interface/noise.png\')',
       },
       fontSize: {
-        '2.5xl': ['1.6rem', { lineHeight: '2.1rem' }],
+        '2.5xl': ['1.575rem', { lineHeight: '2rem' }],
         'sm-md': ['0.9375rem', { lineHeight: '1.25rem' }],
         'xs-sm': ['0.8125rem', { lineHeight: '1.125rem' }],
       },
@@ -46,7 +46,6 @@ const config: Config = {
         light: '20',
         message: '100',
         scrollUp: '40',
-        sidebar: '45',
       },
     },
   },

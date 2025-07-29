@@ -16,6 +16,6 @@ export const formatDate = (date: Date | string | undefined, options?: FormatDate
         hour: '2-digit',
         minute: '2-digit',
       }),
-    }) ?? '').replace(/\u00A0?г\.(,?)/, '$1')
+    }) ?? '').replace(/[\u00A0 ]?г\.(,?)/, '$1')
   );
 };

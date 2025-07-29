@@ -40,19 +40,14 @@
   }
 
   &::before {
-    z-index: 10;
+    z-index: 15;
 
-    // background: radial-gradient(var(--spotlight-bg-size) circle at var(--mouse-x) var(--mouse-y), theme('colors.blue.500'), transparent 40%);
     opacity: var(--spotlight-bg-strength);
   }
 
   &::after {
     z-index: 1;
 
-    // background: radial-gradient(var(--spotlight-border-size) circle at var(--mouse-x) var(--mouse-y),
-    //     theme('colors.blue.300') 0%,
-    //     theme('colors.purple.500') 50%,
-    //     theme('colors.default-200') 100%, transparent 40%);
     opacity: var(--spotlight-border-strength);
   }
 }
