@@ -33,7 +33,7 @@ import type { MDXComponents } from 'mdx/types';
 
 const YOUTUBE_ID = process.env.NEXT_PUBLIC_YOUTUBE_ID;
 
-export default async function Home() {
+export default async function Main() {
   const dir = path.join(process.cwd(), 'src', 'app', 'index.mdx');
   const { content } = await getMdx(dir);
   const { articles } = await getArticleListByCategory(ArticlesCategoryEnum.FRONTEND);

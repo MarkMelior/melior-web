@@ -12,6 +12,7 @@
   font-family: Inter, Manrope, sans-serif;
   box-sizing: border-box;
   grid-template-columns: 1fr max-content 1fr;
+  pointer-events: none;
 
   @media (max-width: theme('screens.xl')) {
     display: flex;

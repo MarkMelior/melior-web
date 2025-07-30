@@ -27,7 +27,7 @@ export type SemanticColors =
   | 'default';
 
 type HeroColor =
-  | `${SemanticColors}-${Exclude<Luminance, '950'>}`
+  | `${SemanticColors}-${Exclude<Luminance, '950'> | '150' | '850'}`
   | SemanticColors
   | 'content1'
   | 'content2'
@@ -41,7 +41,7 @@ type HeroColor =
 type Opacity = 25 | 50 | 75 | 100;
 
 export type HeroTextColor = `text-${HeroColor}` | `text-${HeroColor}/${Opacity}`;
-export type HeroBackgroundColor = `bg-${HeroColor}`;
+export type HeroBackgroundColor = `bg-${HeroColor}` | `bg-${HeroColor}/${Opacity}`;
 
 /**
  * Tailwind

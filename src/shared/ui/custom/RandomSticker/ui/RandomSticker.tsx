@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { type FC } from 'react';
 
 import { PublicImages } from '@/shared/constants';
@@ -30,12 +29,11 @@ export const RandomSticker: FC<RandomStickerProps> = ({ className, rounded = 'ro
       width={size}
     />
   ) : (
-    <Image
+    <img
       alt="Рандомный стикер"
       className={cn(styles.sticker, rounded, className)}
-      height={size}
       src={src}
-      width={size}
+      style={{ height: size, width: size }}
     />
   );
 };

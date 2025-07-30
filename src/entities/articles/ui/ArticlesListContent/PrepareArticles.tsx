@@ -41,6 +41,8 @@ export const PrepareArticles: FC<PrepareArticlesProps> = ({ articles, isFullPage
       </Text>
       <CategoryCard
         articles={prepareArticlesData}
+        backgroundColor="bg-default-150"
+        borderColor="bg-default-300/75"
         cols={isFullPage ? '3' : '2'}
         onClick={handleClick}
       />

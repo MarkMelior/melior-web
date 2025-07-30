@@ -13,14 +13,13 @@
   opacity: 0;
 
   transform: scale(0.98);
-
-  transition: width, transform 250ms;
+  transition: width 250ms, transform 250ms;
   pointer-events: none;
 
   &.opened {
     opacity: 1;
 
-  transform: scale(1);
+    transform: scale(1);
     pointer-events: all;
   }
 

@@ -1,5 +1,6 @@
 import { cn } from '@/shared/lib/common';
 import { formatDate } from '@/shared/lib/text';
+import type { HeroBackgroundColor, TwBackgroundColor } from '@/shared/types';
 import { Flex, IconComponent, Link, StackButtons, Text } from '@/shared/ui';
 import { GlowingBox } from '@/shared/ui/client';
 
@@ -13,6 +14,8 @@ import type { FC } from 'react';
 
 interface CategoryCardProps {
   articles: ArticleData[]
+  backgroundColor?: TwBackgroundColor | HeroBackgroundColor
+  borderColor?: TwBackgroundColor | HeroBackgroundColor
   className?: string
   cols?: '2' | '3'
   glowingSize?: number
@@ -23,6 +26,8 @@ interface CategoryCardProps {
 
 export const CategoryCard: FC<CategoryCardProps> = ({
   articles,
+  backgroundColor,
+  borderColor,
   className,
   cols = '2',
   glowingSize,
@@ -39,6 +44,8 @@ export const CategoryCard: FC<CategoryCardProps> = ({
   >
     {articles.map(({ createdAt, description, icon, link, slug, tags, title, updatedAt }) => (
       <GlowingBox
+        backgroundColor={backgroundColor}
+        borderColor={borderColor}
         borderStrengthHover={1}
         classNames={{ background: 'h-full', foreground: 'h-full transition hover:scale-[1.01] active:scale-[0.99]' }}
         key={title}

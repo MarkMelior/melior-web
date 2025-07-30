@@ -1,5 +1,6 @@
 .name {
   font-size: 2rem;
+  pointer-events: auto;
   text-wrap: nowrap;
 
   @media (max-width: theme('screens.sm')) {
