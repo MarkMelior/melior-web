@@ -30,7 +30,7 @@ export const CategoriesArticleModal: FC<CategoriesArticleModalProps> = ({ childr
       onClose={toggle}
       placement="center"
       scrollBehavior="inside"
-      size="5xl"
+      size="4xl"
     >
       <ModalContent>
         {(onClose) => (

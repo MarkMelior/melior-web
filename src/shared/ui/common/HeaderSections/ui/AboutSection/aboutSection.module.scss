@@ -1,7 +1,11 @@
+@use '@/shared/styles/keyframes' as *;
+
 .wrapper {
   gap: 8px;
   width: 704px; // Зависит от ширины в headerSections. Они должны быть одинаковые
   padding: 20px;
+
+  animation: $header-section-animation;
 }
 
 .links {

@@ -2,6 +2,9 @@ export enum AppRouteEnum {
   MAIN = '/',
   ARTICLES = '/articles',
   HELP = '/help',
+  // APP
+  APP_DAILY_FACTS = '/app/daily-facts',
+  APP_PRODUCTIVITY = '/app/productivity',
   // last
   NOT_FOUND = '/not-found',
 }

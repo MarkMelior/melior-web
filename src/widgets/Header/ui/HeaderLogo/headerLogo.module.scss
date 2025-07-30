@@ -5,6 +5,7 @@
   height: 42px;
 
   transition: transform 0.15s ease-in-out;
+  pointer-events: auto;
 
   &:active {
     transform: scale(0.95);
