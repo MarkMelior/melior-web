@@ -1,0 +1,21 @@
+⚡ **`key` в React спасает от лишних перерисовок**
+
+React сравнивает список по `key`. Если ключи неправильные, компонент будет заново рендериться.
+
+❌ Плохо:
+
+```jsx hideHeader
+{items.map((item, i) => (
+  <Item key={i} name={item.name} />
+))}
+```
+
+✅ Хорошо:
+
+```jsx hideHeader
+{items.map(item => (
+  <Item key={item.id} name={item.name} />
+))}
+```
+
+> Ключи должны быть уникальными и неизменными.

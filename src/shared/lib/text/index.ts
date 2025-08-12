@@ -1,3 +1,4 @@
+export * from './capitalize-first-letter';
 export * from './clean-text';
 export * from './copy-to-clipboard';
 export * from './date';

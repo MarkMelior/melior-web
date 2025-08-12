@@ -9,7 +9,7 @@ import { unified } from 'unified';
 
 import { rehypeAutoHeading } from './plugins/rehype-auto-heading';
 
-import type { ArticleMetadata, MdxHeadline } from './types';
+import type { MdxHeadline } from './types';
 
 interface MdxResponse<T> {
   content: string
@@ -17,7 +17,7 @@ interface MdxResponse<T> {
   metadata: T
 }
 
-export async function getMdx<T = ArticleMetadata>(
+export async function getMdx<T>(
   filePath: string,
 ): Promise<MdxResponse<T>> {
   let fileContents: string | null = null;

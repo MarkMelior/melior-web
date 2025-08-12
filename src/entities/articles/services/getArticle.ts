@@ -2,12 +2,11 @@
 
 import path from 'path';
 
-import type { CategoryMetadata } from '@/shared/lib/mdx';
 import { getMdx } from '@/shared/lib/mdx';
 
 import { articlesDirectory } from '../constants';
 
-import type { ArticleResponse } from '../types';
+import type { ArticleMetadata, ArticleResponse, CategoryMetadata } from '../types';
 
 export async function getArticle(
   category: string,
@@ -20,7 +19,7 @@ export async function getArticle(
     name,
     'index.mdx',
   );
-  const { content, headlines, metadata } = await getMdx(dir);
+  const { content, headlines, metadata } = await getMdx<ArticleMetadata>(dir);
 
   const dirCategory = path.join(
     process.cwd(),

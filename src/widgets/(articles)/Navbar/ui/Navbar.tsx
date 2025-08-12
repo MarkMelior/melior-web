@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { APP_NAME, AppRouteEnum } from '@/shared/constants';
+import { APP_NAME, RoutesEnum } from '@/shared/constants';
 import { Logo } from '@/shared/icons';
 import { Emoji } from '@/shared/lib/emoji';
 import { Button } from '@/shared/ui/client';
@@ -24,7 +24,7 @@ export const Navbar: FC<NavbarProps> = ({ maxWidth = 'max-w-8xl' }) => (
       <Button
         as={Link}
         className="ml-1 flex h-min items-center gap-0 rounded-full bg-primary-600/10 px-3 py-1 text-xs font-medium leading-5 text-primary-600 hover:bg-primary-600/20"
-        href={AppRouteEnum.MAIN}
+        href={RoutesEnum.MAIN}
       >
         <span>
           <Emoji emoji="🚀" />

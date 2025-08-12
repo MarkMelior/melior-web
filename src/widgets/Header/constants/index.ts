@@ -11,5 +11,5 @@ export const headerSections: Record<
   HeaderSection
 > = {
   about: { label: 'Обо мне', width: 704 },
-  apps: { disabled: true, label: 'Мини-приложения', width: 700 },
+  apps: { label: 'Мини-приложения', width: 670 },
 };

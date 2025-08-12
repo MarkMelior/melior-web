@@ -2,6 +2,7 @@ import check from './check.webp';
 import coding from './coding.json';
 import coffee from './coffee.json';
 import cool from './cool.json';
+import cross from './cross.webp';
 import crystal from './crystal.json';
 import eye from './eye.json';
 import heartFire from './heart-fire.json';
@@ -22,6 +23,7 @@ export const emojiData = {
   '✅': check,
   '✨': stars,
   '❇️': sber,
+  '❌': cross,
   '❤️': heart,
   '❤️‍🔥': heartFire,
   '⭐️': star,

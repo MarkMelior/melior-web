@@ -3,11 +3,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { type ArticleMetadata, type CategoryMetadata, getMdx } from '@/shared/lib/mdx';
+import { getMdx } from '@/shared/lib/mdx';
 
 import { articlesDirectory } from '../constants';
 
-import type { ArticleData, ArticlesCategoryEnum, ArticlesListResponse } from '../types';
+import type { ArticleData, ArticleMetadata, ArticlesCategoryEnum, ArticlesListResponse, CategoryMetadata } from '../types';
 import type { Dirent } from 'fs';
 
 export async function getArticlesList(): Promise<ArticlesListResponse[]> {

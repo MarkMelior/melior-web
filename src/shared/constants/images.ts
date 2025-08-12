@@ -13,13 +13,16 @@ const PublicImagesData = {
   },
   minecraft: {
     AmethystShard: 'AmethystShard.webp',
+    AppleGolden: 'AppleGolden.webp',
     Cake: 'Cake.webp',
     Diamond: 'Diamond.webp',
     EnderPearl: 'EnderPearl.webp',
+    EventDiamond: 'EventDiamond.webp',
     IronPickaxe: 'IronPickaxe.webp',
     IronSword: 'IronSword.webp',
     LeatherTunic: 'LeatherTunic.webp',
     NetherStar: 'NetherStar.webp',
+    Popcorn: 'Popcorn.webp',
   },
   misc: {
     Banner: 'banner.webp',

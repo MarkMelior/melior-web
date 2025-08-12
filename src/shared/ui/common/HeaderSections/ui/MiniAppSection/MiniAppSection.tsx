@@ -1,22 +1,97 @@
-import { cn } from '@/shared/lib/common';
+'use client';
+
+import { cn } from '@heroui/react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { HiLink } from 'react-icons/hi';
+import { MdArrowOutward } from 'react-icons/md';
+
+import { RoutesEnum } from '@/shared/constants';
+import { formatDate } from '@/shared/lib/text';
+import { Flex, Text } from '@/shared/ui/custom';
+
+import EventDiamond from '@public/images/minecraft/EventDiamond.webp';
+import Popcorn from '@public/images/minecraft/Popcorn.webp';
 
 import styles from './miniAppSection.module.scss';
 
-import type { FC } from 'react';
+const miniApps = [
+  {
+    createdAt: '2025-08-12T00:00:00+03:00',
+    description: 'Каждый день — новый факт. Пока только про Frontend',
+    href: RoutesEnum.APP_DAILY_FACTS,
+    icon: (
+      <img
+        alt="Popcorn"
+        className={cn('text-danger', styles.icon)}
+        src={Popcorn.src}
+      />
+    ),
+    title: 'Ежедневные факты',
+  },
+  {
+    description: 'Скоро здесь будет очень удобное приложение',
+    disabled: true,
+    href: 'В разработке',
+    icon: (
+      <img
+        alt="Minecraft event diamond"
+        className={cn('text-blue-500', styles.icon)}
+        src={EventDiamond.src}
+      />
+    ),
+    title: 'Продуктивность',
+  },
+];
 
-interface MiniAppSectionProps {
-  isVisible: boolean
-}
+export const MiniAppSection = () => {
+  const pathname = usePathname();
 
-export const MiniAppSection: FC<MiniAppSectionProps> = ({ isVisible }) => (
-  <div
-    className={cn(
-      styles.resources,
-      { [styles.visible]: isVisible },
-    )}
-    id="resources"
-    style={{ display: isVisible ? 'block' : 'none' }}
-  >
-    Скоро во всех кинотеатрах страны
-  </div>
-);
+  return miniApps.map(({ createdAt, description, disabled, href, icon, title }) => {
+    const isActive = `/${pathname.split('/')[1]}` === href;
+
+    return (
+      <Link
+        className={cn(
+          styles.card,
+          { [styles.disabled]: disabled },
+          { [styles.active]: isActive },
+        )}
+        href={href}
+        key={title}
+        target="_blank"
+      >
+        <MdArrowOutward className={styles.outward} size={18} />
+        <Flex gap="gap-3" vertical={true}>
+          {icon}
+          <Flex gap="gap-1" vertical={true}>
+            <Text size="text-sm" weight="font-semibold">{title}</Text>
+            <Text color="text-default-600" size="text-xs-sm">{description}</Text>
+          </Flex>
+        </Flex>
+        <Flex
+          align="items-center"
+          className="mt-auto"
+          gap="gap-2"
+          justify="justify-between"
+        >
+          <Text className="mt-auto flex w-max items-center gap-1 rounded-full border border-default-400 bg-default-100/50 px-2 py-0.5 dark:bg-default-300/50" font="code" size="text-xs">
+            <HiLink />
+            {isActive ? 'Вы и так здесь' : href}
+          </Text>
+          <Text color="text-default-500" size="text-xs">{formatDate(createdAt)}</Text>
+        </Flex>
+        <Text
+          className={cn('mt-1.5', styles.open)}
+          color="text-primary-600"
+          font="code"
+          size="text-sm"
+          weight="font-extralight"
+        >
+          {isActive ? 'Открыть ещё раз' : 'Открыть приложение'}
+          {' ->'}
+        </Text>
+      </Link>
+    );
+  });
+};

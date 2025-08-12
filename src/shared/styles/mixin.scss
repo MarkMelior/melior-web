@@ -29,7 +29,7 @@
   }
 }
 
-@mixin header-background($hover: true) {
+@mixin header-background($hover: true, $placement: 'bottom') {
   background: theme('colors.default-50/0.4');
 
   transition: all 0.15s ease-in-out;
@@ -54,6 +54,6 @@
   }
 
   &::before {
-    @include gradient-line-before;
+    @include gradient-line-before($placement);
   }
 }

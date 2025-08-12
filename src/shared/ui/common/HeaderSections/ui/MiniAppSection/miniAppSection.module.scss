@@ -1,294 +1,88 @@
 @use '@/shared/styles/keyframes' as *;
 
-.resources {
+.wrapper {
+    display: grid;
     gap: 16px;
-    width: 900px; // Зависит от ширины в headerSections. Они должны быть одинаковые
+    min-width: 670px; // Зависит от ширины в headerSections. Они должны быть одинаковые
+    max-width: 670px;
     padding: 20px;
-    flex: none;
 
-    &Title {
-        margin-bottom: 20px;
+    animation: $header-section-animation;
+    grid-template-columns: 1fr 1fr;
+}
 
-        font-size: 12px;
-        font-weight: 500;
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    padding: 12px 20px;
 
-        color: #7B8193;
-        letter-spacing: 0.48px;
-        text-transform: uppercase;
+    background: theme('colors.default-200/0.9');
+    border-radius: 8px;
+
+    transition: 0.75s ease background, 0.1s ease-in border-color, transform 0.3s ease-in-out;
+    border-color: theme('colors.default-300');
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+
+    [class="light"] & {
+        background: theme('colors.default-50');
     }
 
-    &Useful {
-        &Links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+    &:hover {
+        background: theme('colors.default-300/0.3');
+
+        transform: scale(1.01);
+        border-color: theme('colors.default-500');
+
+        [class="light"] & {
+            background: theme('colors.default-200/0.3');
+            border-color: theme('colors.default-400');
         }
 
-        &Link {
-            display: flex;
-            gap: 8px;
-            padding: 4px 16px 4px 4px;
+        .outward {
+            color: theme('colors.default-700');
+        }
 
-            border-radius: 8px;
-
-            transition: 100ms ease all;
-
-            $root: &;
-
-            &:hover {
-                background: #F9F9FB;
-            }
-
-            &Icon {
-                display: block;
-                width: 16px;
-                height: 16px;
-
-                transition: 100ms ease all;
-                fill: #6788F3;
-
-                #{$root}:hover & {
-                    fill: #6788F3;
-                }
-            }
-
-            &Title {
-                font-size: 14px;
-                font-weight: 500;
-
-                color: #2E3038;
-
-                transition: 100ms ease all;
-
-                #{$root}:hover & {
-                    color: #6788F3;
-                }
-            }
-
-            &Description {
-                margin-top: 4px;
-
-                font-size: 12px;
-                font-weight: 400;
-
-                color: #7B8193;
-            }
+        .open {
+            color: theme('colors.primary-700');
         }
     }
 
-    &Examples {
-        margin-top: 40px;
-
-        &Links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        &Link {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 2px 16px 2px 2px;
-
-            border-radius: 8px;
-
-            $root: &;
-
-            &:hover {
-                background: #F9F9FB;
-            }
-
-            &Icon {
-                display: block;
-                width: 30px;
-                height: 30px;
-
-                transition: 100ms ease all;
-                fill: #35AAFF;
-                object-fit: contain;
-                stroke: transparent;
-
-                #{$root}:hover & {
-                    fill: #6788F3;
-                }
-
-                &Wrapper {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 36px;
-                    height: 36px;
-
-                    background: #FFF;
-                    border-radius: 6px;
-                    border: 0.5px solid #E4E5E9;
-                    flex: none;
-                }
-            }
-
-            &Title {
-                display: -webkit-box;
-
-                font-size: 14px;
-                font-weight: 500;
-
-                color: #2E3038;
-                overflow: hidden;
-
-                transition: 100ms ease all;
-                -webkit-box-orient: vertical;
-
-                #{$root}:hover & {
-                    color: #6788F3;
-                }
-            }
-
-            &Description {
-                display: -webkit-box;
-                margin-top: 2px;
-
-                font-size: 12px;
-                font-weight: 400;
-
-                color: #7B8193;
-                overflow: hidden;
-                -webkit-box-orient: vertical;
-            }
-        }
-
-        &More {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 2px 16px 2px 2px;
-
-            border-radius: 8px;
-
-            transition: 100ms ease all;
-
-            $root: &;
-
-            &:hover {
-                background: #F9F9FB;
-            }
-
-            &Icon {
-                display: block;
-                width: 20px;
-                height: 20px;
-
-                transition: 100ms ease all;
-                fill: #7B8193;
-
-                #{$root}:hover & {
-                    fill: #6788F3;
-                }
-
-                &Wrapper {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 36px;
-                    height: 36px;
-
-                    background: #F9F9FB;
-                    border-radius: 8px;
-                    flex: none;
-                }
-            }
-
-            &Title {
-                font-size: 14px;
-                font-weight: 500;
-
-                color: #7B8193;
-
-                transition: 100ms ease all;
-
-                #{$root}:hover & {
-                    color: #6788F3;
-                }
-            }
-        }
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
     }
 
-    &Services {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        &Service {
-            display: flex;
-            flex-direction: column;
-            min-height: 160px;
-            padding: 12px;
-
-            background: #FBFBFC;
-            border-radius: 8px;
-
-            transition: 100ms ease all;
-
-            $root: &;
-
-            &:hover {
-                background: #F4F4F6;
-            }
-
-            &Wrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-            }
-
-            &Icon {
-                display: block;
-                width: 40px;
-                height: 40px;
-
-                border-radius: 4px;
-            }
-
-            &Arrow {
-                display: block;
-                width: 16px;
-                height: 16px;
-
-                opacity: 0.33;
-
-                transition: 100ms ease all;
-                fill: #2E3038;
-
-                #{$root}:hover & {
-                    opacity: 1;
-                }
-            }
-
-            &Title {
-                margin-top: auto;
-
-                font-size: 17px;
-                font-weight: 500;
-                line-height: 17px;
-
-                color: #2E3038;
-
-                transition: 100ms ease all;
-
-                #{$root}:hover & {
-                    color: #6788F3;
-                }
-            }
-
-            &Description {
-                margin-top: 4px;
-
-                font-size: 15px;
-                font-weight: 400;
-                line-height: 19px;
-
-                color: #4D505E;
-            }
-        }
+    &.active {
+        background: theme('colors.primary-200/0.3');
+        border-color: theme('colors.primary-500');
+        border-width: 2px;
     }
+
+    .icon {
+        $size: 44px;
+        min-width: $size;
+        max-width: $size;
+        min-height: $size;
+        max-height: $size;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+    }
+}
+
+.outward {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    color: theme('colors.default-500');
+
+    transition: 0.1s ease-in color;
+}
+
+.open {
+    transition: 0.1s ease-in color;
 }

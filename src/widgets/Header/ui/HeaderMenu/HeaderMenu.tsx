@@ -26,7 +26,13 @@ export const HeaderMenu = () => {
     >
       <div className={styles.content}>
         <AboutSection isVisible={isVisible('about')} />
-        <MiniAppSection isVisible={isVisible('apps')} />
+        <div
+          className={styles.miniApps}
+          id="resources"
+          style={{ display: isVisible('apps') ? 'grid' : 'none' }}
+        >
+          <MiniAppSection />
+        </div>
       </div>
     </div>
   );

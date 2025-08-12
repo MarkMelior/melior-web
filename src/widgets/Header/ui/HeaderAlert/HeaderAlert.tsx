@@ -14,6 +14,7 @@ import { useHeader } from '../../store';
 import styles from './headerAlert.module.scss';
 
 interface HeaderAlertProps {
+  canCloseTopAlert?: boolean
   children: ReactNode
   color?: SemanticColors
   link?: {
@@ -24,6 +25,7 @@ interface HeaderAlertProps {
 }
 
 export const HeaderAlert: FC<HeaderAlertProps> = ({
+  canCloseTopAlert = false,
   children,
   color,
   link,
@@ -47,6 +49,12 @@ export const HeaderAlert: FC<HeaderAlertProps> = ({
   };
 
   useEffect(() => {
+    if (canCloseTopAlert) {
+      setIsVisible(true);
+
+      return;
+    }
+
     let id: NodeJS.Timeout;
 
     if (!isScrolled) {
@@ -60,7 +68,15 @@ export const HeaderAlert: FC<HeaderAlertProps> = ({
     }
 
     return () => clearTimeout(id);
-  }, [isScrolled]);
+  }, [isScrolled, canCloseTopAlert]);
+
+  const shouldShowOpenedClass = (() => {
+    if (canCloseTopAlert) {
+      return isVisible && (isClosing || !isAlertClosed);
+    } else {
+      return isVisible && !(isScrolled && !isClosing && isAlertClosed);
+    }
+  })();
 
   return (
     <div className={styles.wrapper}>
@@ -71,7 +87,7 @@ export const HeaderAlert: FC<HeaderAlertProps> = ({
           styles.alert,
           { [styles[color!]]: color },
           { [styles.closing]: isClosing },
-          { [styles.opened]: isVisible && !(isScrolled && !isClosing && isAlertClosed) },
+          { [styles.opened]: shouldShowOpenedClass },
         )}
       >
         <div className={styles.alertRow}>
@@ -90,7 +106,7 @@ export const HeaderAlert: FC<HeaderAlertProps> = ({
             <Button
               className={cn(
                 'opacity-60',
-                { ['opacity-0 pointer-events-none select-none']: !isScrolled || isClosing },
+                { ['opacity-0 pointer-events-none select-none']: canCloseTopAlert ? isClosing : (!isScrolled || isClosing) },
               )}
               color="secondary"
               isIconOnly={true}

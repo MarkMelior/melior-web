@@ -2,6 +2,7 @@ export const ExtendColors = {
   main: {
     50: '#F8FAFC',
     100: '#E9F0F7',
+    150: '#E2E9F3',
     200: '#D4DDE9',
     300: '#B9C8DB',
     400: '#90A3BB',
@@ -9,6 +10,7 @@ export const ExtendColors = {
     600: '#3F4E65',
     700: '#32445F',
     800: '#1E293B',
+    850: '#162031',
     900: '#0E1625',
     950: '#090C1B',
   },

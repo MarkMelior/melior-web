@@ -1,4 +1,6 @@
-import type { ArticleMetadata, CategoryMetadata, MdxHeadline } from '@/shared/lib/mdx';
+import type { StackVariants } from '@/shared/constants';
+import type { IconNames } from '@/shared/icons';
+import type { MdxHeadline } from '@/shared/lib/mdx';
 
 export interface ArticleResponse {
   content: string
@@ -6,6 +8,22 @@ export interface ArticleResponse {
   headlines: MdxHeadline[]
   metadata: ArticleMetadata
   metadataCategory: CategoryMetadata
+}
+
+export interface ArticleMetadata {
+  createdAt?: string
+  description: string
+  icon?: IconNames
+  note?: string
+  tags?: StackVariants[]
+  title: string
+  updatedAt?: string
+}
+
+export interface CategoryMetadata {
+  description: string
+  link: string
+  title: string
 }
 
 export interface ArticleData extends ArticleMetadata {
