@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { LuFolderTree } from 'react-icons/lu';
 import { TbMessageCircleUp } from 'react-icons/tb';
 
-import { AppRouteEnum } from '@/shared/constants';
+import { RoutesEnum } from '@/shared/constants';
 import { CrossIcon } from '@/shared/icons';
 import { useModals } from '@/shared/lib/common';
 import { Emoji } from '@/shared/lib/emoji';
 import { useTheme } from '@/shared/lib/theme';
-import { AboutLinks, AboutServices, Flex } from '@/shared/ui';
+import { AboutLinks, AboutServices, Flex, MiniAppSection } from '@/shared/ui';
 import { Button, DynamicQuote } from '@/shared/ui/client';
 
 import { useBurger } from '../store';
@@ -117,7 +117,7 @@ export const Burger: FC<BurgerProps> = ({
                     <Button
                       as={Link}
                       className="w-full"
-                      href={AppRouteEnum.MAIN}
+                      href={RoutesEnum.MAIN}
                       onPress={onClose}
                       radius="sm"
                       variant="flat"
@@ -150,6 +150,7 @@ export const Burger: FC<BurgerProps> = ({
                   <AboutServices />
                 </div>
                 <DynamicQuote />
+                <MiniAppSection />
               </div>
             </DrawerBody>
           </>

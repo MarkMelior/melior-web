@@ -3,7 +3,8 @@
 .wrapper {
     display: grid;
     gap: 16px;
-    width: 670px; // Зависит от ширины в headerSections. Они должны быть одинаковые
+    min-width: 670px; // Зависит от ширины в headerSections. Они должны быть одинаковые
+    max-width: 670px;
     padding: 20px;
 
     animation: $header-section-animation;
@@ -26,11 +27,20 @@
     border-width: 1px;
     cursor: pointer;
 
+    [class="light"] & {
+        background: theme('colors.default-50');
+    }
+
     &:hover {
         background: theme('colors.default-300/0.3');
 
         transform: scale(1.01);
         border-color: theme('colors.default-500');
+
+        [class="light"] & {
+            background: theme('colors.default-200/0.3');
+            border-color: theme('colors.default-400');
+        }
 
         .outward {
             color: theme('colors.default-700');
@@ -44,6 +54,12 @@
     &.disabled {
         opacity: 0.5;
         pointer-events: none;
+    }
+
+    &.active {
+        background: theme('colors.primary-200/0.3');
+        border-color: theme('colors.primary-500');
+        border-width: 2px;
     }
 
     .icon {

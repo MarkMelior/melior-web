@@ -1,10 +1,11 @@
-export enum AppRouteEnum {
+export enum RoutesEnum {
   MAIN = '/',
   ARTICLES = '/articles',
   HELP = '/help',
   // APP
-  APP_DAILY_FACTS = '/app/daily-facts',
-  APP_PRODUCTIVITY = '/app/productivity',
+  APP_DAILY_FACTS = '/app-daily-facts',
+  APP_DAILY_FACTS_FRONTEND = '/app-daily-facts/frontend',
+  APP_PRODUCTIVITY = '/app-productivity',
   // last
   NOT_FOUND = '/not-found',
 }

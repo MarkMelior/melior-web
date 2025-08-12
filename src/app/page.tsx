@@ -19,6 +19,7 @@ import {
 } from '@/shared/ui';
 
 import { ArticlesCategoryEnum, getArticleListByCategory } from '@/entities/articles';
+import type { ArticleMetadata } from '@/entities/articles';
 
 import { MainLayout } from '@core/layouts/main';
 import BannerImage from '@public/images/misc/banner.webp';
@@ -35,7 +36,7 @@ const YOUTUBE_ID = process.env.NEXT_PUBLIC_YOUTUBE_ID;
 
 export default async function Main() {
   const dir = path.join(process.cwd(), 'src', 'app', 'index.mdx');
-  const { content } = await getMdx(dir);
+  const { content } = await getMdx<ArticleMetadata>(dir);
   const { articles } = await getArticleListByCategory(ArticlesCategoryEnum.FRONTEND);
 
   const { description, publishedAt, title, viewCount } = await getYoutubeInfo(YOUTUBE_ID);
@@ -136,7 +137,7 @@ export default async function Main() {
       </div>
       {/* TODO: Может вынести в Layout? Проблема в то, что в Layout нет searchParams */}
       {/* {search?.category && search?.name ? (
-        <ArticleModal link={`${AppRouteEnum.ARTICLES}/${search.category}/${search.name}`}>
+        <ArticleModal link={`${RoutesEnum.ARTICLES}/${search.category}/${search.name}`}>
           <ArticlePage params={Promise.resolve({ category: search.category, name: search.name })} />
         </ArticleModal>
       ) : null} */}

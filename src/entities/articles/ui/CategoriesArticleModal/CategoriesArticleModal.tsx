@@ -5,7 +5,7 @@ import { FaWindowRestore } from 'react-icons/fa';
 import { FaFilter, FaSort } from 'react-icons/fa6';
 import { TbSettings } from 'react-icons/tb';
 
-import { AppRouteEnum } from '@/shared/constants';
+import { RoutesEnum } from '@/shared/constants';
 import { CrossIcon } from '@/shared/icons';
 import { useModals } from '@/shared/lib/common';
 import { Flex, Text } from '@/shared/ui';
@@ -79,7 +79,7 @@ export const CategoriesArticleModal: FC<CategoriesArticleModalProps> = ({ childr
                 as={Link}
                 color="primary"
                 endContent={<FaWindowRestore size={14} />}
-                href={AppRouteEnum.ARTICLES}
+                href={RoutesEnum.ARTICLES}
                 onPress={onClose}
                 variant="light"
               >

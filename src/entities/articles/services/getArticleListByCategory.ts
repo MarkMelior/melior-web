@@ -3,12 +3,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import type { ArticleMetadata, CategoryMetadata } from '@/shared/lib/mdx';
 import { getMdx } from '@/shared/lib/mdx';
 
 import { articlesDirectory } from '../constants';
 
-import type { ArticleData, ArticlesCategoryEnum } from '../types';
+import type { ArticleData, ArticleMetadata, ArticlesCategoryEnum, CategoryMetadata } from '../types';
 
 interface ArticleListByCategoryResponse {
   articles: ArticleData[]

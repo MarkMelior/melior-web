@@ -1,3 +1,4 @@
+import type { RoutesEnum } from '@/shared/constants';
 import { Text } from '@/shared/ui';
 
 import { HeaderAlert } from '../HeaderAlert/HeaderAlert';
@@ -7,6 +8,8 @@ import { HeaderLogo } from '../HeaderLogo/HeaderLogo';
 import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 
 import styles from './header.module.scss';
+
+import type { FC } from 'react';
 
 /**
  * 1) Статьи
@@ -47,16 +50,25 @@ const getAlertMessage = () => {
   );
 };
 
-export const Header = () => (
+interface HeaderProps {
+  canCloseTopAlert?: boolean
+  logoHref?: RoutesEnum
+  logoSrc?: string
+  logoTooltip?: string
+  name?: string
+}
+
+export const Header: FC<HeaderProps> = ({ canCloseTopAlert, logoHref, logoSrc, logoTooltip, name }) => (
   <header className={styles.header}>
-    <HeaderLogo />
+    <HeaderLogo href={logoHref} src={logoSrc} tooltip={logoTooltip} />
     <HeaderAlert
+      canCloseTopAlert={canCloseTopAlert}
       color="secondary"
       title={getAlertMessage()}
     >
-      <HeaderLinks color="secondary" />
+      <HeaderLinks canCloseTopAlert={canCloseTopAlert} color="secondary" />
     </HeaderAlert>
-    <HeaderButtons />
+    <HeaderButtons name={name} />
     <HeaderMenu />
   </header>
 );

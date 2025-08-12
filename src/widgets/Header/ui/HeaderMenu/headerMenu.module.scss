@@ -1,3 +1,5 @@
+@use '@/shared/styles/keyframes' as *;
+
 .menu {
   position: absolute;
   top: calc(100% - 25px);
@@ -39,4 +41,15 @@
   border: 1px solid theme('colors.default-300/0.8');
 
   backdrop-filter: blur(theme('backdropBlur.2xl'));
+}
+
+.miniApps {
+  display: grid;
+  gap: 16px;
+  min-width: 670px; // Зависит от ширины в headerSections. Они должны быть одинаковые
+  max-width: 670px;
+  padding: 20px;
+
+  animation: $header-section-animation;
+  grid-template-columns: 1fr 1fr;
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BiSolidDoorOpen } from 'react-icons/bi';
 
-import { AppRouteEnum } from '@/shared/constants';
+import { RoutesEnum } from '@/shared/constants';
 import type { EmojiType } from '@/shared/lib/emoji';
 import { Emoji } from '@/shared/lib/emoji';
 import { Flex, RandomSticker, Text } from '@/shared/ui';
@@ -40,7 +40,7 @@ export const NotFound: FC<NotFoundProps> = ({
       <Button
         as={Link}
         color="primary"
-        href={AppRouteEnum.MAIN}
+        href={RoutesEnum.MAIN}
         size="lg"
         startContent={<BiSolidDoorOpen size={20} />}
         variant="shadow"

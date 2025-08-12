@@ -4,7 +4,7 @@ export { getArticleListByCategory } from './services/getArticleListByCategory';
 
 export { getArticlesList } from './services/getArticlesList';
 export { useArticles } from './store';
-export type { ArticleResponse, ArticlesListResponse, ArticleData } from './types';
+export type { ArticleResponse, ArticlesListResponse, ArticleData, ArticleMetadata, CategoryMetadata } from './types';
 export { ArticlesCategoryEnum } from './types';
 
 /* UI */

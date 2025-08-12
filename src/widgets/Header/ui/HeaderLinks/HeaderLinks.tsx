@@ -18,10 +18,11 @@ import { useHeader } from '../../store';
 import styles from './headerLinks.module.scss';
 
 interface HeaderLinksProps {
+  canCloseTopAlert?: boolean
   color?: SemanticColors
 }
 
-export const HeaderLinks: FC<HeaderLinksProps> = ({ color = 'primary' }) => {
+export const HeaderLinks: FC<HeaderLinksProps> = ({ canCloseTopAlert, color = 'primary' }) => {
   const isScrolled = useScrolled(ScrollThresholdEnum.MAIN_HEADER);
   const { isAlertClosed, isVisible, setActiveSection, setIsAlertClosed } = useHeader();
   const { toggle: toggleArticlesCategories } = useModals('articlesCategories');
@@ -79,7 +80,7 @@ export const HeaderLinks: FC<HeaderLinksProps> = ({ color = 'primary' }) => {
         >
           <Icon size={24} />
         </Button>
-        {isAlertClosed && isScrolled ? (
+        {(canCloseTopAlert ? isAlertClosed : isAlertClosed && isScrolled) ? (
           <Button
             className={styles.button}
             color={color}

@@ -1,9 +1,12 @@
+'use client';
+
 import { cn } from '@heroui/react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { HiLink } from 'react-icons/hi';
 import { MdArrowOutward } from 'react-icons/md';
 
-import { AppRouteEnum } from '@/shared/constants';
+import { RoutesEnum } from '@/shared/constants';
 import { formatDate } from '@/shared/lib/text';
 import { Flex, Text } from '@/shared/ui/custom';
 
@@ -12,17 +15,11 @@ import Popcorn from '@public/images/minecraft/Popcorn.webp';
 
 import styles from './miniAppSection.module.scss';
 
-import type { FC } from 'react';
-
-interface MiniAppSectionProps {
-  isVisible: boolean
-}
-
 const miniApps = [
   {
-    createdAt: '2025-08-01T00:00:00+03:00',
-    description: 'Каждый день — новый факт. На любой вкус и цвет',
-    href: AppRouteEnum.APP_DAILY_FACTS,
+    createdAt: '2025-08-12T00:00:00+03:00',
+    description: 'Каждый день — новый факт. Пока только про Frontend',
+    href: RoutesEnum.APP_DAILY_FACTS,
     icon: (
       <img
         alt="Popcorn"
@@ -33,7 +30,7 @@ const miniApps = [
     title: 'Ежедневные факты',
   },
   {
-    description: 'Я даже и не понял. Довольно очено даже как-то...',
+    description: 'Скоро здесь будет очень удобное приложение',
     disabled: true,
     href: 'В разработке',
     icon: (
@@ -47,15 +44,19 @@ const miniApps = [
   },
 ];
 
-export const MiniAppSection: FC<MiniAppSectionProps> = ({ isVisible }) => (
-  <div
-    className={styles.wrapper}
-    id="resources"
-    style={{ display: isVisible ? 'grid' : 'none' }}
-  >
-    {miniApps.map(({ createdAt, description, disabled, href, icon, title }) => (
+export const MiniAppSection = () => {
+  const pathname = usePathname();
+
+  return miniApps.map(({ createdAt, description, disabled, href, icon, title }) => {
+    const isActive = `/${pathname.split('/')[1]}` === href;
+
+    return (
       <Link
-        className={cn(styles.card, { [styles.disabled]: disabled })}
+        className={cn(
+          styles.card,
+          { [styles.disabled]: disabled },
+          { [styles.active]: isActive },
+        )}
         href={href}
         key={title}
         target="_blank"
@@ -74,9 +75,9 @@ export const MiniAppSection: FC<MiniAppSectionProps> = ({ isVisible }) => (
           gap="gap-2"
           justify="justify-between"
         >
-          <Text className="mt-auto flex w-max items-center gap-1 rounded-full border border-default-400 bg-default-300/50 px-2 py-0.5" font="code" size="text-xs">
+          <Text className="mt-auto flex w-max items-center gap-1 rounded-full border border-default-400 bg-default-100/50 px-2 py-0.5 dark:bg-default-300/50" font="code" size="text-xs">
             <HiLink />
-            {href}
+            {isActive ? 'Вы и так здесь' : href}
           </Text>
           <Text color="text-default-500" size="text-xs">{formatDate(createdAt)}</Text>
         </Flex>
@@ -87,10 +88,10 @@ export const MiniAppSection: FC<MiniAppSectionProps> = ({ isVisible }) => (
           size="text-sm"
           weight="font-extralight"
         >
-          Открыть приложение
+          {isActive ? 'Открыть ещё раз' : 'Открыть приложение'}
           {' ->'}
         </Text>
       </Link>
-    ))}
-  </div>
-);
+    );
+  });
+};
